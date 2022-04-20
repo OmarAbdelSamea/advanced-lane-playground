@@ -14,8 +14,8 @@
     4. Draw lanes
 #### Sobel Edge Detection:
     1. Transfer frame from RGB to Gray 
-    2. Apply soble magnitude detection on X-axis then use only edges above a certain threshold
-    3. Apply soble direction detection for X and Y gradients 
+    2. Apply sobel magnitude detection on X-axis then use only edges above a certain threshold
+    3. Apply sobel direction detection for X and Y gradients 
     4. Combine magnitude and direction output
     5. Transfer frame from RGB to HLS
     6. Remove points outside of a certain threshold
