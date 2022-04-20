@@ -392,16 +392,15 @@ def vid_pipeline(img):
     img_thresh = np.dstack((img_thresh, img_thresh, img_thresh))*255
     img_warp = np.dstack((img_warp, img_warp, img_warp))*255
 
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    fontColor = (255, 255, 255)
+    fontSize=0.7
+    cv2.putText(img, 'Lane Curvature: {:.0f} m'.format(lane_curve), (540, 620), font, fontSize, fontColor, 2)
+
     img_tile = concat_tile_resize([[img],
                                    [img_thresh ,img_warp , out_img]])
 
     img_tile = cv2.resize(img_tile,(1280,720))
-    
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    fontColor = (0, 0, 0)
-    fontSize=0.5
-    cv2.putText(out_img, 'Lane Curvature: {:.0f} m'.format(lane_curve), (570, 620), font, fontSize, fontColor, 2)
-    cv2.putText(out_img, 'Vehicle offset: {:.4f} m'.format(curverad[2]), (570, 650), font, fontSize, fontColor, 2)
     if debugging_mode == "1":
         ret_img = img_tile
     else:
@@ -413,7 +412,7 @@ def vid_pipeline(img):
 right_curves, left_curves = [],[]
 from moviepy.editor import VideoFileClip
 
-myclip = VideoFileClip(sys.argv[1]).subclip(0,15)
+myclip = VideoFileClip(sys.argv[1])
 output_vid = sys.argv[2]
 clip = myclip.fl_image(vid_pipeline)
 clip.write_videofile(output_vid, audio=False)
