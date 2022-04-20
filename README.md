@@ -12,7 +12,7 @@
     2. Applying perspective warping
     3. Detect using sliding windows
     4. Draw lanes
-### Sobel Edge Detection:
+#### Sobel Edge Detection:
     1. Transfer frame from RGB to Gray 
     2. Apply soble magnitude detection on X-axis then use only edges above a certain threshold
     3. Apply soble direction detection for X and Y gradients 
@@ -22,12 +22,12 @@
     7. Combine points from sobel and HLS 
     8. Setting an area of interest 
 
-### Perspective warping:
+#### Perspective warping:
     1. Mapping warping point to source and destination images
     2. Get the perspective transform matrix
     3. Apply warping
 
-### Sliding windows
+#### Sliding windows
     1. Getting image histogram
     2. Get the peaks of leftmost and rightmost quarter of the histogram
     3. Set windows parameters
@@ -39,7 +39,7 @@
     5. Generate x and y values for plotting
 
 
-### Draw lanes 
+#### Draw lanes 
     1. Create an all zeros image 
     2. Draw lanes in it using fillPoly and polylines
     3. Merge Input RGB image with the result
