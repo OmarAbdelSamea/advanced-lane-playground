@@ -43,7 +43,7 @@ while getopts "hdnyt" OPTION; do
                         ;;
         esac
 done
-if [[ $1 == "-d" || $1 == "-y" || $1 == "-n" || $1 == "-t"]] ; then
+if [[ $1 == "-d" || $1 == "-y" || $1 == "-n" || $1 == "-t" ]] ; then
         INPUT_VID=$2
         if [[ -f $2 &&  -n $3 ]] ; then
                 OUTPUT_VID=$3
