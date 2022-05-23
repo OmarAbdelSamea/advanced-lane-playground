@@ -6,12 +6,15 @@ INPUT_VID=0
 MODE="--both"
 if [[ $# -eq 0 || ($# -eq 1 && ${1::1} == "-") ]] ; then
         echo "[ERROR] No input file specfied"
-        echo "Usage: [-y/-n/-d] /path/to/input-video.mp4 /path/to/output-video.mp4"
+        echo "Usage: [-y/-n/-d/-t] /path/to/input-video.mp4 /path/to/output-video.mp4"
         exit 1
 fi 
 
-while getopts "hdny" OPTION; do
+while getopts "hdnyt" OPTION; do
         case $OPTION in
+                t)
+                        MODE="--yolo-tiny"
+                        ;;
                 y)
                         MODE="--yolo"
                         ;;
@@ -25,7 +28,8 @@ while getopts "hdny" OPTION; do
                         echo "Usage:"
                         echo ".sh /path/to/input-video.mp4 /path/to/output-video.mp4 "
                         echo ""
-                        echo "   -y     car detection only"
+                        echo "   -t     car detection only with tiny yolo"
+                        echo "   -y     car detection only with yolo"
                         echo "   -n     lane detection with no debugging"
                         echo "   -d     lane detection with debugging"
                         echo "   -h     help (this output)"
@@ -34,12 +38,12 @@ while getopts "hdny" OPTION; do
                         ;;
                         
                 [?])	
-                        echo "Usage: [-y/-n/-d] /path/to/input-video.mp4 /path/to/output-video.mp4"
+                        echo "Usage: [-y/-n/-d/-t] /path/to/input-video.mp4 /path/to/output-video.mp4"
                         exit 1
                         ;;
         esac
 done
-if [[ $1 == "-d" || $1 == "-y" || $1 == "-n" ]] ; then
+if [[ $1 == "-d" || $1 == "-y" || $1 == "-n" || $1 == "-t"]] ; then
         INPUT_VID=$2
         if [[ -f $2 &&  -n $3 ]] ; then
                 OUTPUT_VID=$3
