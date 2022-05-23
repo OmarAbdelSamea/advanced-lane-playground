@@ -55,4 +55,4 @@ else
         fi  
 fi  
 
-echo python main.py $MODE $INPUT_VID $OUTPUT_VID 
+python main.py $MODE $INPUT_VID $OUTPUT_VID 
